@@ -1,0 +1,37 @@
+{{ define "create" }}
+    <!doctype html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport"
+              content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Welcome</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="font-mono">
+    {{template "header"}}
+    <main>
+        <section>
+            <div class="flex flex-col items-center justify-center mx-auto mt-5">
+                <h1 class="text-2xl font-bold">Форма добаления статьи</h1>
+                <form class="flex flex-col gap-3 mt-3" action="/save_article" method="post">
+                    <label class="text-base font-light mb-[-10px]" for="title">Заголовок статьи</label>
+                    <input class="p-2 w-96 border rounded border-black border-solid" type="text" name="title" id="title"
+                                                      placeholder="Введите название статьи">
+                    <label class="text-base font-light mb-[-10px]" for="anons">Анонс статьи</label>
+                    <textarea class="p-2 w-96 border rounded border-black border-solid" name="anons" id="anons"
+                                                         placeholder="Введите анонс статьи" cols="30" rows="3"></textarea>
+                    <label class="text-base font-light mb-[-10px]" for="full_text">Текст статьи</label>
+                    <textarea class="p-2 w-96 border rounded border-black border-solid" name="full_text" id="full_text"
+                                                             placeholder="Введите текст статьи" cols="30" rows="10"></textarea>
+                    <button class="p-2 w-50 border rounded border-black border-solid bg-black text-white hover:bg-white hover:text-black transition-all"
+                            type="submit">Добавить
+                    </button>
+                </form>
+            </div>
+        </section>
+    </main>
+    </body>
+    </html>
+{{ end }}
