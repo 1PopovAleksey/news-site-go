@@ -34,12 +34,12 @@ func index(w http.ResponseWriter, r *http.Request) {
 
 	for res.Next() {
 		var post Article
-		err = res.Scan(&post.Title, &post.Anons, &post.FullText)
+		err = res.Scan(&post.Id, &post.Title, &post.Anons, &post.FullText)
 		if err != nil {
 			panic(err)
 		}
 
-		//fmt.Println(fmt.Sprintf("User: %s %s with age %d", user.Name, user.LastName, user.Age))
+		fmt.Println(fmt.Sprintf("Post: %s %s %s", post.Title, post.Anons, post.FullText))
 	}
 
 	t.ExecuteTemplate(w, "index", nil)
