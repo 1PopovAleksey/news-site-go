@@ -1,6 +1,6 @@
 {{ define "index" }}
     <!doctype html>
-    <html lang="en">
+    <html lang="ru">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport"
@@ -8,16 +8,21 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>Welcome</title>
         <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="static/css/main.css" type="text/plain">
     </head>
     <body class="font-mono">
     {{template "header"}}
     <main>
         <section>
-            <div>
-                <p class="flex flex-col justify-center items-center mx-auto h-[90vh]">
-                    Lorem ipsum dolor sit amet
-                </p>
+            <div class="flex flex-col justify-center items-center gap-3 mx-auto m-3">
+                {{ range . }}
+                    <div class="flex flex-col gap-2 p-3 border-black border w-[500px]">
+                        <h2 class="text-4xl font-semibold">{{ .Title }}</h2>
+                        <p class="font-light">{{ .Anons }}</p>
+                        <a class="bg-black p-2 font-medium transition-all hover:text-stone-300 text-white w-[max-content]" href="/post/{{ .Id }}">Читать далее</a>
+                    </div>
+                {{ else }}
+                    <p class="flex flex-col justify-center items-center mx-auto h-[90vh]">Статей нет</p>
+                {{ end }}
             </div>
         </section>
     </main>
